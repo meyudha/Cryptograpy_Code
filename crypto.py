@@ -22,7 +22,7 @@ def encrypt_file(filename):
     with open(filename, "wb") as encrypted_file:
         encrypted_file.write(encrypted)
 
-    print(f"[+] File '{filename}' berhasil dienkripsi (ditimpa).")
+    print(f"[+] File '{filename}' berhasil dienkripsi.")
 
 def decrypt_file(filename):
     key = load_key()
@@ -36,7 +36,7 @@ def decrypt_file(filename):
     with open(filename, "wb") as dec_file:
         dec_file.write(decrypted)
 
-    print(f"[+] File '{filename}' berhasil didekripsi (dikembalikan).")
+    print(f"[+] File '{filename}' berhasil didekripsi.")
 
 if __name__ == "__main__":
     print("=== KRIPTOGRAFI FILE (TEXT, JPG, PDF) ===")
@@ -65,3 +65,4 @@ if __name__ == "__main__":
 
     else:
         print("Pilihan tidak valid.")
+
