@@ -19,7 +19,6 @@ def encrypt_file(filename):
 
     encrypted = fernet.encrypt(original)
 
-    # Timpa file asli dengan versi terenkripsi
     with open(filename, "wb") as encrypted_file:
         encrypted_file.write(encrypted)
 
