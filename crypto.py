@@ -19,10 +19,11 @@ def encrypt_file(filename):
 
     encrypted = fernet.encrypt(original)
 
-    with open(filename + ".encrypted", "wb") as encrypted_file:
+    # Timpa file asli dengan versi terenkripsi
+    with open(filename, "wb") as encrypted_file:
         encrypted_file.write(encrypted)
 
-    print(f"[+] File '{filename}' berhasil dienkripsi -> {filename}.encrypted")
+    print(f"[+] File '{filename}' berhasil dienkripsi (ditimpa).")
 
 def decrypt_file(filename):
     key = load_key()
@@ -32,18 +33,17 @@ def decrypt_file(filename):
         encrypted = enc_file.read()
 
     decrypted = fernet.decrypt(encrypted)
-    original_name = filename.replace(".encrypted", "")
 
-    with open(original_name, "wb") as dec_file:
+    with open(filename, "wb") as dec_file:
         dec_file.write(decrypted)
 
-    print(f"[+] File '{filename}' berhasil didekripsi -> {original_name}")
+    print(f"[+] File '{filename}' berhasil didekripsi (dikembalikan).")
 
 if __name__ == "__main__":
     print("=== KRIPTOGRAFI FILE (TEXT, JPG, PDF) ===")
     print("1. Generate Key")
-    print("2. Encrypt File")
-    print("3. Decrypt File")
+    print("2. Encrypt File (timpa file asli)")
+    print("3. Decrypt File (kembalikan file asli)")
 
     choice = input("Pilih (1/2/3): ")
 
@@ -58,7 +58,7 @@ if __name__ == "__main__":
             print("[!] File tidak ditemukan.")
 
     elif choice == "3":
-        file_name = input("Masukkan nama file terenkripsi (.encrypted): ")
+        file_name = input("Masukkan nama file yang akan didekripsi: ")
         if os.path.exists(file_name):
             decrypt_file(file_name)
         else:
